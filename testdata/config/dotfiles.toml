@@ -1,16 +1,16 @@
 version = 0
 
 [[dotfiles]]
-enable=true
-source="testdata/dotfiles/test1.md"
-target="testdata/config/test1"
+enable = true
+source = "testdata/dotfiles/test1.md"
+target = "testdata/config/test1"
 
 [[dotfiles]]
-enable=false
-source="testdata/dotfiles/test2.md"
-target="testdata/config/test2"
+enable = false
+source = "testdata/dotfiles/test2.md"
+target = "testdata/config/test2"
 
 [[dotfiles]]
-enable=false
-source="testdata/dotfiles/test3.md"
-target="testdata/config/test3"
+enable = false
+source = "testdata/dotfiles/test3.md"
+target = "testdata/config/test3"
