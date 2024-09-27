@@ -12,19 +12,13 @@ type MyConfig struct {
 }
 
 func main() {
-	file, err := os.Open("./testdata/config/dotfiles.toml")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	data := make([]byte, 1024)
-	count, err := file.Read(data)
+	data, err := os.ReadFile("./testdata/config/dotfiles.toml")
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	var cfg MyConfig
-	if err := toml.Unmarshal(data[:count], &cfg); err != nil {
+	if err := toml.Unmarshal(data, &cfg); err != nil {
 		panic(err)
 	}
 
