@@ -7,8 +7,19 @@ import (
 	"os"
 )
 
-type MyConfig struct {
-	Version string
+type Config struct {
+	Meta
+	Dotfiles []Dotfile `toml:"dotfiles"`
+}
+
+type Meta struct {
+	Version int `toml:"version"`
+}
+
+type Dotfile struct {
+	IsEnabled bool   `toml:"enable"`
+	Source    string `toml:"source"`
+	Target    string `toml:"target"`
 }
 
 func main() {
@@ -17,10 +28,11 @@ func main() {
 		log.Fatal(err)
 	}
 
-	var cfg MyConfig
+	var cfg Config
 	if err := toml.Unmarshal(data, &cfg); err != nil {
 		panic(err)
 	}
 
-	fmt.Println(cfg.Version)
+	fmt.Println(cfg.Meta)
+	fmt.Println(cfg.Dotfiles)
 }
