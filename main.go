@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"github.com/pelletier/go-toml/v2"
 	"log"
 	"os"
@@ -33,6 +32,13 @@ func main() {
 		panic(err)
 	}
 
-	fmt.Println(cfg.Meta)
-	fmt.Println(cfg.Dotfiles)
+	for _, v := range cfg.Dotfiles {
+		if v.IsEnabled == false {
+			continue
+		}
+
+		if err := link(v.Source, v.Target); err != nil {
+			log.Fatal(err)
+		}
+	}
 }
