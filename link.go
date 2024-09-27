@@ -5,9 +5,9 @@ import (
 	"os/exec"
 )
 
-func link(source, target string) error {
-	fmt.Println("link", source, target)
+func link(target, link string) error {
+	fmt.Println("link", target, link)
 
-	cmd := exec.Command("ln", "-sr", source, target)
+	cmd := exec.Command("ln", "-sr", target, link)
 	return cmd.Run()
 }
